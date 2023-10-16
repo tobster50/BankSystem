@@ -10,7 +10,7 @@ class Bank:
         newAccount = Account(accountName, accountType, accountPassword)
         newAccountNumber = self.accountNumber
         self.allAccounts[newAccountNumber] = newAccount
-        print(f"ACCOUNT NUMBER: {self.accountNumber}")
+        print(f"\nACCOUNT NUMBER: {self.accountNumber}")
         #increment ready for next account creation
         self.accountNumber = self.accountNumber + 1
         Account.accountDetail(newAccount)
@@ -43,19 +43,11 @@ class Bank:
         print("Account created!")
 
     def passwordCheck (self, accountNumber, accountPassword):
-        
-        for account in self.allAccounts:
-            if account == accountNumber:
-                accountNumber = str(accountNumber)
-                print(f"{account} equals {accountNumber}!")
-                result  = self.allAccounts[account][self.accountPassword]
-                print(result)
-            else:
-                print("Fail")
-        #if self.allAccounts[accountNumber][accountPassword] == accountPassword:
-        #    print("Password matches")
-        #else:
-        #    print("Access denied")
+        user = self.allAccounts[accountNumber]
+        if accountPassword == user.accountPassword:
+            print("Password Match")
+        else:
+            print("Password doesn't match")
     
     def accessAccount(self):
         accountNumberInput = input("\nInput your account number: ")
