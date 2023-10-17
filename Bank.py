@@ -75,7 +75,7 @@ class Bank:
             if choice == 1:
                 user.withdraw(user.accountBalance)
             if choice == 2:
-                user.deposit(user.accountBalance)
+                user.deposit()
             if choice == 3:
                 pass 
             if choice == 4:
