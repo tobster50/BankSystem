@@ -1,20 +1,33 @@
 class Account:
-    def __init__ (self, accountName, accountType, accountPassword):
+    def __init__ (self, accountName, accountType, accountPassword, accountBalance):
         self.accountName = accountName
         self.accountType = accountType
         self.accountPassword = accountPassword
-        self.balance = 0
+        self.accountBalance = accountBalance
 
-    def deposit(self, depositAmount):
-        if depositAmount >= 0:
-            return self.balance + depositAmount
-        elif depositAmount < 0:
-            print("You cannot deposit a negative value")
+    def deposit(self, balance):
+        print(f"Current balance: {balance}")
+        deposit = input("How much would you like to deposit? ")
+        deposit = int(deposit)
+        balance = balance + deposit
+        print(f"You have deposited £{deposit}!")
+        return balance
+
+    def withdraw(self, balance):
+        print(f"\nCurrent Balance: {balance}")
+        if balance <= 0:
+            print(f"\nYou cannot withdraw because you have no money!")
+        else:
+            withdraw = input("\nHow much would you like to deposit? ")
+            withdraw = int(withdraw)
+            print(f"\nYou have withdrawn £{withdraw}!")
+            balance = balance - withdraw
+            return balance
 
     def accountDetail (self):
         print(f"ACCOUNT HOLDER NAME: {self.accountName}")
         print(f"ACCOUNT TYPE: {self.accountType}")
-        print(f"CURRENT BALANCE: £{self.balance}")
+        print(f"CURRENT BALANCE: £{self.accountBalance}")
 
 
        
