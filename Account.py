@@ -5,13 +5,12 @@ class Account:
         self.accountPassword = accountPassword
         self.accountBalance = accountBalance
 
-    def deposit(self, balance):
-        print(f"Current balance: {balance}")
+    def deposit(self):
+        print(f"Current balance: {self.accountBalance}")
         deposit = input("How much would you like to deposit? ")
         deposit = int(deposit)
-        balance = balance + deposit
+        self.accountBalance += deposit
         print(f"You have deposited £{deposit}!")
-        return balance
 
     def withdraw(self, balance):
         print(f"\nCurrent Balance: {balance}")
