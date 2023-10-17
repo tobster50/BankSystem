@@ -60,14 +60,11 @@ class Bank:
 
     def userInterface(self, accountNumber):
         user = self.allAccounts[accountNumber]
-        name = user.accountName
-        accType = user.accountType
-        balance = user.accountBalance
         session = 1
         while session == 1:
-            print(f"\nWelcome back {name}! What would you like to do today?")
-            print(f"\nAccount Type: {accType}")
-            print(f"Current Balance: £{balance}")
+            print(f"\nWelcome back {user.accountName}! What would you like to do today?")
+            print(f"\nAccount Type: {user.accountType}")
+            print(f"Current Balance: £{user.accountBalance}")
             print("\n1. Withdraw")
             print("2. Deposit")
             print("3. Modify Account")
@@ -76,9 +73,9 @@ class Bank:
             choice = input("\nInput your choice 1-5")
             choice = int(choice)
             if choice == 1:
-                user.withdraw(balance)
+                user.withdraw(user.accountBalance)
             if choice == 2:
-                user.deposit(balance)
+                user.deposit(user.accountBalance)
             if choice == 3:
                 pass 
             if choice == 4:
