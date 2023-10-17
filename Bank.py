@@ -6,8 +6,8 @@ class Bank:
         self.allAccounts = {}
         self.accountNumber = 0
 
-    def createAccount(self, accountName, accountType, accountPassword):
-        newAccount = Account(accountName, accountType, accountPassword)
+    def createAccount(self, accountName, accountType, accountPassword, accountBalance):
+        newAccount = Account(accountName, accountType, accountPassword, accountBalance)
         newAccountNumber = self.accountNumber
         self.allAccounts[newAccountNumber] = newAccount
         print(f"\nACCOUNT NUMBER: {self.accountNumber}")
@@ -30,7 +30,7 @@ class Bank:
                 print("Passwords do not match. Try again")
         type = 1
         while type == 1:
-            accountType = input("Account Type: ")
+            accountType = input("Account Type: (C/c = Credit S/s = Savings)")
             if accountType == "S" or accountType == "s":
                 accountType = "Savings"
                 type = 0
@@ -39,26 +39,65 @@ class Bank:
                 type = 0
             else:
                 print("Try again")
-        self.createAccount(accountName, accountType, accountPassword)
+        startingBalance = input("Input your starting account Balance: £")
+        startingBalance = int(startingBalance)
+        self.createAccount(accountName, accountType, accountPassword, startingBalance)
         print("Account created!")
 
     def passwordCheck (self, accountNumber, accountPassword):
         user = self.allAccounts[accountNumber]
         if accountPassword == user.accountPassword:
             print("Password Match")
+            return 1
         else:
             print("Password doesn't match")
+    
+    def withdraw (self, accountNumber):
+        pass
+
+    def deposit (self, accountNumber, balance):
+        pass
+
+    def userInterface(self, accountNumber):
+        user = self.allAccounts[accountNumber]
+        name = user.accountName
+        accType = user.accountType
+        balance = user.accountBalance
+        session = 1
+        while session == 1:
+            print(f"\nWelcome back {name}! What would you like to do today?")
+            print(f"\nAccount Type: {accType}")
+            print(f"Current Balance: £{balance}")
+            print("\n1. Withdraw")
+            print("2. Deposit")
+            print("3. Modify Account")
+            print("4. Close Your Account")
+            print("5. Exit")
+            choice = input("\nInput your choice 1-5")
+            choice = int(choice)
+            if choice == 1:
+                user.withdraw(balance)
+            if choice == 2:
+                user.deposit(balance)
+            if choice == 3:
+                pass 
+            if choice == 4:
+                pass
+            if choice == 5:
+                session = 0
     
     def accessAccount(self):
         accountNumberInput = input("\nInput your account number: ")
         accountNumberInput = int(accountNumberInput)
         passwordInput = input("Input your password: ")
-        self.passwordCheck(accountNumberInput, passwordInput)
+        check = self.passwordCheck(accountNumberInput, passwordInput)
+        if check == 1:
+            self.userInterface(accountNumberInput)
 
     def showAccounts(self):
         print("\nList of accounts: ")
         for accountNumber in self.allAccounts:
             newAccount = self.allAccounts[accountNumber]
-            print(f"Account number: {accountNumber} | Account Holder Name: {newAccount.accountName} | Account Type: {newAccount.accountType}" )
+            print(f"Account number: {accountNumber} | Account Holder Name: {newAccount.accountName} | Account Type: {newAccount.accountType} | Balance: {newAccount.accountBalance}" )
 
 
