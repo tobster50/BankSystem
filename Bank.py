@@ -73,11 +73,11 @@ class Bank:
             choice = input("\nInput your choice 1-5")
             choice = int(choice)
             if choice == 1:
-                user.withdraw(user.accountBalance)
+                user.withdraw()
             if choice == 2:
                 user.deposit()
             if choice == 3:
-                pass 
+                user.modify() 
             if choice == 4:
                 pass
             if choice == 5:
