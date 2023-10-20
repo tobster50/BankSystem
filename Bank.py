@@ -52,12 +52,6 @@ class Bank:
         else:
             print("Password doesn't match")
     
-    def withdraw (self, accountNumber):
-        pass
-
-    def deposit (self, accountNumber, balance):
-        pass
-
     def userInterface(self, accountNumber):
         user = self.allAccounts[accountNumber]
         session = 1
@@ -68,7 +62,6 @@ class Bank:
             print("\n1. Withdraw")
             print("2. Deposit")
             print("3. Modify Account")
-            print("4. Close Your Account")
             print("5. Exit")
             choice = input("\nInput your choice 1-5")
             choice = int(choice)
@@ -79,8 +72,6 @@ class Bank:
             if choice == 3:
                 user.modify() 
             if choice == 4:
-                pass
-            if choice == 5:
                 session = 0
     
     def accessAccount(self):
