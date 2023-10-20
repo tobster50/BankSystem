@@ -25,13 +25,3 @@ while login == 0:
         sys.exit()
     elif choice == 5:
         bank.showAccounts()
-
-"""
-1. NEW ACCOUNT
-2. DEPOSIT AMOUNT
-3. WITHDRAW AMOUNT
-4. BALANCE ENQUIRY
-5. ALL ACCOUNT HOLDER LIST
-6. CLOSE AN ACCOUNT
-7. MODIFY AN ACCOUNT
-"""
